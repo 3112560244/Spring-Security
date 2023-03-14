@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/qx_security?useSSL=false&&serverTimezone=UTC
+    username: root
+    password: 111111
+server:
+  port: 8080
