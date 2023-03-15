@@ -30,6 +30,25 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
+    public void Susees(T data) {
+        this.data = data;
+    }
+    public void Susees(T data, String msg) {
+        this.msg = msg;
+        this.data = data;
+    }
+    public void Susees(Integer code,T data, String msg) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
+
+    public void Error(Integer code,String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     public Integer getCode() {
         return code;
     }

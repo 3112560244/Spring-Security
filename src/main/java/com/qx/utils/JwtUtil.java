@@ -1,5 +1,6 @@
 package com.qx.utils;
 
+import com.qx.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -19,7 +20,7 @@ public class JwtUtil {
     //有效期为
     public static final Long JWT_TTL = 60 * 60 *1000L;// 60 * 60 *1000  一个小时
     //设置秘钥明文
-    public static final String JWT_KEY = "sangeng";
+    public static final String JWT_KEY = "qx";
 
     public static String getUUID(){
         String token = UUID.randomUUID().toString().replaceAll("-", "");
@@ -27,7 +28,7 @@ public class JwtUtil {
     }
     
     /**
-     * 生成jtw
+     * 生成jwt
      * @param subject token中要存放的数据（json格式）
      * @return
      */
@@ -37,13 +38,26 @@ public class JwtUtil {
     }
 
     /**
-     * 生成jtw
+     * 生成jwt
      * @param subject token中要存放的数据（json格式）
      * @param ttlMillis token超时时间
      * @return
      */
     public static String createJWT(String subject, Long ttlMillis) {
         JwtBuilder builder = getJwtBuilder(subject, ttlMillis, getUUID());// 设置过期时间
+        return builder.compact();
+    }
+
+
+    /**
+     * 生成jwt token
+     * @param id jwt的唯一标识
+     * @param subject token中要存放的数据（json格式）
+     * @param ttlMillis token超时时间
+     * @return
+     */
+    public static String createJWT(String id, String subject, Long ttlMillis) {
+        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, id);// 设置过期时间
         return builder.compact();
     }
 
@@ -66,23 +80,20 @@ public class JwtUtil {
                 .setExpiration(expDate);
     }
 
-    /**
-     * 创建token
-     * @param id
-     * @param subject
-     * @param ttlMillis
-     * @return
-     */
-    public static String createJWT(String id, String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, id);// 设置过期时间
-        return builder.compact();
-    }
 
     public static void main(String[] args) throws Exception {
-//        String jwt = createJWT("2123");
-        Claims claims = parseJWT("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOTY2ZGE3NGYyZGM0ZDAxOGU1OWYwNjBkYmZkMjZhMSIsInN1YiI6IjIiLCJpc3MiOiJzZyIsImlhdCI6MTYzOTk2MjU1MCwiZXhwIjoxNjM5OTY2MTUwfQ.NluqZnyJ0gHz-2wBIari2r3XpPp06UMn4JS2sWHILs0");
+        User user = new User();
+        user.setUserName("张三");
+        user.setPassword("test");
+        String jwt = createJWT("1001",user.toString(), 3600000L);
+        System.out.println(jwt);
+
+
+//        Claims claims = parseJWT("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMDAxIiwic3ViIjoiVXNlcihpZD1udWxsLCB1c2VyTmFtZT3lvKDkuIksIG5pY2tOYW1lPW51bGwsIHBhc3N3b3JkPXRlc3QsIHN0YXR1cz1udWxsLCBlbWFpbD1udWxsLCBwaG9uZW51bWJlcj1udWxsLCBzZXg9bnVsbCwgYXZhdGFyPW51bGwsIHVzZXJUeXBlPW51bGwsIGNyZWF0ZUJ5PW51bGwsIGNyZWF0ZVRpbWU9bnVsbCwgdXBkYXRlQnk9bnVsbCwgdXBkYXRlVGltZT1udWxsLCBkZWxGbGFnPW51bGwpIiwiaXNzIjoic2ciLCJpYXQiOjE2Nzg3OTcwOTksImV4cCI6MTY3ODc5NzEwMH0.BcbceNKr78esEpLkVv-sK8hCsvD9SQ3fdcsmtD2dwVk");
+        Claims claims = parseJWT("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMDAxIiwic3ViIjoiVXNlcihpZD1udWxsLCB1c2VyTmFtZT3lvKDkuIksIG5pY2tOYW1lPW51bGwsIHBhc3N3b3JkPXRlc3QsIHN0YXR1cz1udWxsLCBlbWFpbD1udWxsLCBwaG9uZW51bWJlcj1udWxsLCBzZXg9bnVsbCwgYXZhdGFyPW51bGwsIHVzZXJUeXBlPW51bGwsIGNyZWF0ZUJ5PW51bGwsIGNyZWF0ZVRpbWU9bnVsbCwgdXBkYXRlQnk9bnVsbCwgdXBkYXRlVGltZT1udWxsLCBkZWxGbGFnPW51bGwpIiwiaXNzIjoic2ciLCJpYXQiOjE2Nzg3OTcyNTQsImV4cCI6MTY3ODgwMDg1NH0.U6v4gMPtk7beRBv8UBkYn9CZQGONp1OwmFyETCh6m1w");
         String subject = claims.getSubject();
         System.out.println(subject);
+
 //        System.out.println(claims);
     }
 
