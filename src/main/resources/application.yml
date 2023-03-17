@@ -9,4 +9,24 @@ spring:
     port: 6379
     database: 10
 server:
-  port: 8080
+  port: 8082
+
+
+#Actuator的/logfile接口
+management:
+  server:
+    port: 9527
+  #      ssl:
+  #        enabled: true
+  #        protocol: TLS
+  #        keyStoreType: JKS
+  #        keyStore: classpath:xg.keystore
+  #        keyStorePassword: 123123
+  #        keyAlias: www.xg.com
+  endpoints:
+    web:
+#      base-path: /ep
+      exposure:
+#        include: logfile
+        include: "*" #暴露所有的endpoint
+
