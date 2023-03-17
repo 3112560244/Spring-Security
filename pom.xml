@@ -57,6 +57,13 @@
             <version>5.8.15</version>
         </dependency>
 
+        <!--okhttp3-->
+        <dependency>
+            <groupId>io.freefair.okhttp-spring-boot</groupId>
+            <artifactId>okhttp3-spring-boot-starter</artifactId>
+            <version>2.4.0-rc1</version>
+        </dependency>
+
         <!--jwt-->
 <!--        <dependency>-->
 <!--            <groupId>io.jsonwebtoken</groupId>-->
