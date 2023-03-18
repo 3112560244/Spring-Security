@@ -1,5 +1,6 @@
 package com.qx.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,9 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class HelloController {
 
-    @GetMapping("/hello")
+    @GetMapping("/admin")
+    @PreAuthorize("hasAuthority('admin')")
     public String hello(){
-        return "hello123";
+        return "admin";
+    }
+
+    @GetMapping("/user")
+    @PreAuthorize("hasAuthority('user')")
+    public String user(){
+        return "user";
+    }
+
+    @GetMapping("/test")
+    @PreAuthorize("hasAuthority('test')")
+    public String test(){
+        return "test";
     }
 
 }
