@@ -71,6 +71,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //认证失败处理
         http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
 
+
+        //解决跨域问题
+        http.cors();
+
     }
 
 

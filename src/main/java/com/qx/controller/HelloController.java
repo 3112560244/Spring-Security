@@ -17,22 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class HelloController {
 
-    @GetMapping("/dept")
+    @GetMapping("/admin")
     @PreAuthorize("hasAuthority('system:dept:list')")
     public String hello(){
         return "admin";
     }
 
     @GetMapping("/user")
-    @PreAuthorize("hasAuthority('user')")
+    @PreAuthorize("hasAuthority('system:user:list')")
     public String user(){
         return "user";
     }
 
-    @GetMapping("/test")
-    @PreAuthorize("hasAuthority('test')")
+    @GetMapping("/public")
+    @PreAuthorize("hasAnyAuthority('system:dept:list','system:user:list')")
     public String test(){
-        return "test";
+        return "public";
     }
 
 }

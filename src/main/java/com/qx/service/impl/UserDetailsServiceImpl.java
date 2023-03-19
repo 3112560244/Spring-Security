@@ -34,6 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new MyCustomException(401,"用户名或密码错误");
         }
 
+
         //查询用户权限 将权限信息封装到List中
         List<String> list = menuMapper.selectPermsByUserId(user.getId());
 //        ArrayList list = new ArrayList<>(Arrays.asList("admin", "user"));
