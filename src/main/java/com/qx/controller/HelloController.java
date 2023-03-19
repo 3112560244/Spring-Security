@@ -35,4 +35,10 @@ public class HelloController {
         return "public";
     }
 
+
+    @GetMapping("/customization")
+    @PreAuthorize("@userPower.hasAuthority('system:user:list')")
+    public String customization(){
+        return "public";
+    }
 }
