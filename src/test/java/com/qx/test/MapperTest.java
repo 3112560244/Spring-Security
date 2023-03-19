@@ -1,6 +1,7 @@
 package com.qx.test;
 
 import com.qx.domain.User;
+import com.qx.mapper.MenuMapper;
 import com.qx.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class MapperTest {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private MenuMapper menuMapper;
+
     @Test
     public void testUserMapper(){
         List<User> users = userMapper.selectList(null);
@@ -31,6 +35,11 @@ public class MapperTest {
     }
 
 
+    @Test
+    public void testMenuMapper(){
+        List<String> menus = menuMapper.selectPermsByUserId(Long.valueOf(1));
+        menus.forEach(System.out::println);
+    }
 
 
     @Test

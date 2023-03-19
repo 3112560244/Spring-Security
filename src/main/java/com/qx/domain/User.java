@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * 用户表(User)实体类
  *
- * @author 三更
+ * @author zedq
  */
 @Data
 @AllArgsConstructor

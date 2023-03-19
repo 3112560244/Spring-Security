@@ -1,6 +1,8 @@
 package com.qx.config;
 
 import com.qx.filter.JwtAuthenticationTokenFilter;
+import com.qx.handler.AccessDeniedHandlerImpl;
+import com.qx.handler.AuthenticationEntryPointImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
+    @Autowired
+    private AuthenticationEntryPointImpl authenticationEntryPoint;
+
+    @Autowired
+    private AccessDeniedHandlerImpl accessDeniedHandler;
 
     /**
      * 创建BCryptPasswordEncoder注入容器
@@ -57,6 +64,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //添加过滤器
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+        //自定义异常处理
+        //授权失败处理
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+        //认证失败处理
+        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
 
     }
 

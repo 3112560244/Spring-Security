@@ -3,7 +3,7 @@ package com.qx.domain;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * @Author 三更  B站： https://space.bilibili.com/663528522
+ * @author zedq
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseResult<T> {
@@ -30,24 +30,24 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
-    public void Susees(T data) {
-        this.data = data;
-    }
-    public void Susees(T data, String msg) {
-        this.msg = msg;
-        this.data = data;
-    }
-    public void Susees(Integer code,T data, String msg) {
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
-    }
-
-
-    public void Error(Integer code,String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
+//    public void success(T data) {
+//        this.data = data;
+//    }
+//    public void success(T data, String msg) {
+//        this.msg = msg;
+//        this.data = data;
+//    }
+//    public void success(Integer code,T data, String msg) {
+//        this.code = code;
+//        this.msg = msg;
+//        this.data = data;
+//    }
+//
+//
+//    public void error(Integer code,String msg) {
+//        this.code = code;
+//        this.msg = msg;
+//    }
 
     public Integer getCode() {
         return code;
