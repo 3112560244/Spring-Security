@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.qx</groupId>
-    <artifactId>Spring-Security</artifactId>
+    <artifactId>Spring-Security-Manage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Spring-Security</name>
-    <description>Spring-Security</description>
+    <name>Spring-Security-Manage</name>
+    <description>Spring-Security-Manage</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
