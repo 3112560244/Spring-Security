@@ -18,7 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
-
+/**
+ * 
+ * @Description token过滤器
+ * @Author ZedQ
+ * @Date 2023/3/19 16:12
+ * @Version 1.0
+  **/
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * TODO
  *
- * @Description
+ * @Description 自定义权限校验类
  * @Author ZedQ
  * @Date 2023/3/19 19:25
  * @Version 1.0

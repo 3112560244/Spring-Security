@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * TODO
  *
- * @Description
+ * @Description 自定义异常
  * @Author ZedQ
  * @Date 2023/3/15 15:31
  * @Version 1.0

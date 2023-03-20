@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                //关闭csrf
+                //关闭csrf  前后端分离项目不需要防范跨站请求伪造
                 .csrf().disable()
                 //不通过Session获取SecurityContext
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -58,7 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/user/login").anonymous()
-//                .antMatchers("/testCors").hasAuthority("system:dept:list222")
+
+                // 指定路径添加指定权限
+                .antMatchers("/test").hasAuthority("system:dept:list")
+
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
 
