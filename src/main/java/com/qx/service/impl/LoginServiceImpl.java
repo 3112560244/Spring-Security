@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * TODO
@@ -53,7 +54,9 @@ public class LoginServiceImpl implements LoginService {
         Map<String,String> map = new HashMap<>();
         map.put("token",jwt);
         //把完整的用户信息存入redis  userid作为key
-        redisCache.setCacheObject("login:"+userid,loginUser);
+//        redisCache.setCacheObject("login:"+userid,loginUser,120, TimeUnit.MINUTES);
+        redisCache.setCacheObject("login:"+userid,loginUser,20, TimeUnit.SECONDS);
+
         return new ResponseResult(200,"登录成功",map);
     }
 
