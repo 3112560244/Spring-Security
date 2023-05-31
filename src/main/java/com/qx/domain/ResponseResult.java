@@ -30,6 +30,9 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
+
+
+
 //    public void success(T data) {
 //        this.data = data;
 //    }

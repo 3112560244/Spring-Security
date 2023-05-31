@@ -37,7 +37,7 @@ public class LoginController {
     @GetMapping("/test")
     public ResponseResult test(){
         new MyCustomException(401,"测试失败");
-        return new ResponseResult(200,"测试成功");
+        return new ResponseResult(200,"测试成功","");
     }
 
 }

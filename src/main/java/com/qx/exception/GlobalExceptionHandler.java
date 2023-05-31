@@ -18,6 +18,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MyCustomException.class)
     @ResponseBody
     public ResponseResult handle(MyCustomException se){
-        return new ResponseResult(se.getCode(),se.getMessage());
+        return new ResponseResult(se.getCode(),se.getMessage(),"");
     }
 }

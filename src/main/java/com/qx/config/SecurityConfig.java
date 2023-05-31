@@ -19,12 +19,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    //注入jwt过滤器
     @Autowired
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
+    //注入自定义的认证入口点
     @Autowired
     private AuthenticationEntryPointImpl authenticationEntryPoint;
 
+    //注入自定义的权限不足处理器
     @Autowired
     private AccessDeniedHandlerImpl accessDeniedHandler;
 

@@ -39,7 +39,9 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public ResponseResult login(User user) {
         //AuthenticationManager authenticate进行用户认证
+        //封装用户的用户名和密码
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
+        //调用authenticate方法进行认证
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
 
         //如果认证没通过，给出对应的提示
@@ -68,6 +70,6 @@ public class LoginServiceImpl implements LoginService {
         Long userid = loginUser.getUser().getId();
         //删除redis中的值
         redisCache.deleteObject("login:"+userid);
-        return new ResponseResult(200,"注销成功");
+        return new ResponseResult(200,"注销成功","");
     }
 }
